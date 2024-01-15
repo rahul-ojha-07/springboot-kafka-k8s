@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-boot-kafka
+data:
+  application.yaml: |-
+    spring:
+      application:
+        name: spring-boot-kafka
+      main:
+      cloud:
+        kubernetes:
+          reload:
+            enabled: true
+            mode: event
+            monitoring-config-maps: true
+          config:
+            sources:
+              name: ${spring.application.name}
+          enabled: true
+          discovery:
+            all-namespaces: true
+    
+    spring-boot-kafka:
+      kafka:
+        bootstrap-servers: kafka-service-external.kafka.svc.cluster.local:9092
+        group-id: order
+        topics:
+          create-order: create-order
+    
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: health,prometheus
+            
+    
+            

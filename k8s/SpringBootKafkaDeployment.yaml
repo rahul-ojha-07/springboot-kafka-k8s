@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-kafka
+  labels:
+    app: spring-boot-kafka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-kafka
+  template:
+    metadata:
+      name: spring-boot-kafka
+      labels:
+        app: spring-boot-kafka
+    spec:
+      containers:
+        - name: spring-boot-kafka
+          image: spring-boot-kafka:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+              name: main-port
+          volumeMounts:
+            - mountPath: /app/application.yaml
+              name: spring-boot-kafka-application-yaml
+              subPath: application.yaml
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+              scheme: HTTP
+            successThreshold: 1
+            failureThreshold: 3
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 30
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/readiness
+              scheme: HTTP
+            initialDelaySeconds: 150
+            periodSeconds: 30
+            failureThreshold: 3
+            successThreshold: 2
+            timeoutSeconds: 30
+      volumes:
+        - name: spring-boot-kafka-application-yaml
+          configMap:
+            items:
+              - key: application.yaml
+                path: application.yaml
+            name: spring-boot-kafka
+      restartPolicy: Always
+      
