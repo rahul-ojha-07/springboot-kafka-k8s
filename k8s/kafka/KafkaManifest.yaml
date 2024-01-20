@@ -5,10 +5,10 @@ metadata:
   namespace: default
 spec:
   type: ExternalName
-  externalName: kafka-service.kafka.svc.cluster.loc
-  al
+  externalName: kafka-service.kafka.svc.cluster.local
   ports:
     - port: 9092
+      targetPort: 9092
 ---
 apiVersion: v1
 kind: Service
@@ -20,6 +20,7 @@ metadata:
 spec:
   ports:
     - port: 9092
+      targetPort: 9092
   selector:
     app: kafka-broker
 ---

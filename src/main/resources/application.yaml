@@ -2,23 +2,23 @@ spring:
   application:
     name: spring-boot-kafka
   main:
-    banner-mode: off
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-        mode: event
-        monitoring-config-maps: true
-      config:
-        sources:
-          name: ${spring.application.name}
-      enabled: true
-      discovery:
-        all-namespaces: true
+    banner-mode: CONSOLE
+#  cloud:
+#    kubernetes:
+#      reload:
+#        enabled: true
+#        mode: event
+#        monitoring-config-maps: true
+#      config:
+#        sources:
+#          name: ${spring.application.name}
+#      enabled: true
+#      discovery:
+#        all-namespaces: true
 
 spring-boot-kafka:
   kafka:
-    bootstrap-servers: ${KAFKA_SERVER_URL:localhost}:9092
+    bootstrap-servers: localhost:9092
     group-id: order
     topics:
       create-order: create-order

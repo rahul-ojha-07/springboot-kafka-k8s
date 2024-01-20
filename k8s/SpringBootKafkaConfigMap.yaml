@@ -23,7 +23,7 @@ data:
     
     spring-boot-kafka:
       kafka:
-        bootstrap-servers: kafka-service-external.kafka.svc.cluster.local:9092
+        bootstrap-servers: kafka-service.default.svc.cluster.local:9092
         group-id: order
         topics:
           create-order: create-order
