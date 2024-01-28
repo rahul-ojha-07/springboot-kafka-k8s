@@ -23,11 +23,12 @@ import java.util.UUID;
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
+
     @Bean
     public ConsumerFactory<String, Order> consumerFactory(KafkaConfig kafkaConfig) {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfig.getBootstrapServers());
-        props.put(ConsumerConfig.GROUP_ID_CONFIG,kafkaConfig.getGroupId());
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConfig.getGroupId());
         props.put(ConsumerConfig.CLIENT_ID_CONFIG, UUID.randomUUID().toString());
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonSerializer.class);
