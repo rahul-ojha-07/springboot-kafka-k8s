@@ -17,7 +17,7 @@ import java.util.Map;
 public class KafkaProducerConfig {
 
     @Bean
-    public <K, V>ProducerFactory<K, V> producerFactory(KafkaConfig kafkaConfig) {
+    public <K, V> ProducerFactory<K, V> producerFactory(KafkaConfig kafkaConfig) {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfig.getBootstrapServers());
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
@@ -26,7 +26,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public <K, V>KafkaTemplate<K, V> kafkaTemplate(KafkaConfig kafkaConfig) {
+    public <K, V> KafkaTemplate<K, V> kafkaTemplate(KafkaConfig kafkaConfig) {
         return new KafkaTemplate<>(producerFactory(kafkaConfig));
     }
 
