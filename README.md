@@ -197,7 +197,7 @@ The springboot-kafka-k8s project is a robust and versatile platform built using 
 
 Ensure you have the following dependencies installed on your system:
 
-* **Java**: `version x.y.z`
+* **Java**: `version 17`
 
 ###  Installation
 
@@ -237,14 +237,6 @@ mvn test
 
 ---
 
-##  Project Roadmap
-
-- [X] `► INSERT-TASK-1`
-- [ ] `► INSERT-TASK-2`
-- [ ] `► ...`
-
----
-
 ##  Contributing
 
 Contributions are welcome! Here are several ways you can contribute:
@@ -279,19 +271,3 @@ Contributions are welcome! Here are several ways you can contribute:
 Once your PR is reviewed and approved, it will be merged into the main branch.
 
 </details>
-
----
-
-##  License
-
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-##  Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
-[**Return**](#-quick-links)
-
----
